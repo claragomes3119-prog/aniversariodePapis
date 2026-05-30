@@ -62,6 +62,7 @@
         </header>
 
         <main class="container">
+            <!-- CARROSSEL DE IMAGENS AUTOMÁTICO -->
             <section class="bloco-conteudo">
                 <h3>Álbum de Fotos</h3>
                 <div class="carrossel-container">
@@ -73,49 +74,21 @@
                         <div class="slide"><img src="imagens/f5.jpg" alt="Foto 5"></div>
                         <div class="slide"><img src="imagens/f6.jpg" alt="Foto 6"></div>
                     </div>
-                    <button class="carrossel-btn btn-prev" onclick="mudarSlide(-1)">❮</button>
-                    <button class="carrossel-btn btn-next" onclick="mudarSlide(1)">❯</button>
                 </div>
             </section>
 
+            <!-- NOVO: QUADRO CENTRAL DE HOMENAGEM COM UMA MENSAGEM -->
             <section class="bloco-conteudo">
-                <h3>A Linha do Tempo da Vida Dele</h3>
-                <div class="linha-tempo-vertical">
-                    <div class="marco-item">
-                        <div class="marco-ano">👶</div>
-                        <div class="marco-conteudo-box">
-                            <img src="imagens/tempo1.jpg" alt="Infância">
-                            <h4>O Começo de Tudo</h4>
-                            <p>O nascimento do garoto que cresceria para se tornar o melhor pai do mundo. Aqui começava a sua história!</p>
-                        </div>
-                    </div>
-                    <div class="marco-item">
-                        <div class="marco-ano">💍</div>
-                        <div class="marco-conteudo-box">
-                            <img src="imagens/tempo2.jpg" alt="Casamento">
-                            <h4>O Grande Sim</h4>
-                            <p>O dia do casamento e o início da construção da nossa família maravilhosa. Um passo inesquecível!</p>
-                        </div>
-                    </div>
-                    <div class="marco-item">
-                        <div class="marco-ano">🍼</div>
-                        <div class="marco-conteudo-box">
-                            <img src="imagens/tempo3.jpg" alt="Pai">
-                            <h4>Modo Pai Ativado</h4>
-                            <p>A chegada dos filhos e a descoberta do amor mais puro. O início da jornada como nosso grande herói.</p>
-                        </div>
-                    </div>
-                    <div class="marco-item">
-                        <div class="marco-ano">🎂</div>
-                        <div class="marco-conteudo-box">
-                            <img src="imagens/tempo4.jpg" alt="Hoje">
-                            <h4>46 Anos de História</h4>
-                            <p>Hoje celebramos a sua vida, suas conquistas e o privilégio que é ter você por perto todos os dias!</p>
-                        </div>
-                    </div>
+                <div style="text-align: center; padding: 20px 10px;">
+                    <span style="font-size: 3rem;">❤️</span>
+                    <h3 style="border-bottom: none; margin-bottom: 15px; margin-top: 10px;">Querido Pai,</h3>
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: #333; max-width: 700px; margin: 0 auto; font-style: italic;">
+                        "Celebrar os seus 46 anos é celebrar a nossa maior inspiração. Obrigado por ser nosso porto seguro, nosso guia e o herói de todas as nossas histórias. Cada foto e cada lembrança neste site carrega um pedaço do amor gigante que sentimos por você. Que o seu dia seja tão incrível quanto o tamanho do seu coração. Feliz Aniversário!"
+                    </p>
                 </div>
             </section>
 
+            <!-- MURAL DE MENSAGENS -->
             <section class="bloco-conteudo">
                 <h3>Mensagens do Mural</h3>
                 <div class="mural">
@@ -140,14 +113,14 @@
             dispararChuvaDeConfetes();
             iniciarIntervaloCarrossel(); 
         }
-        let slideIndex = 0, carrosselTimer;
-        function mostrarSlide(index) {
+        let slideIndex = 0;
+        function mostrarSlide() {
             const slides = document.querySelectorAll('.slide'); if (slides.length === 0) return;
-            if (index >= slides.length) slideIndex = 0; if (index < 0) slideIndex = slides.length - 1;
+            if (slideIndex >= slides.length) slideIndex = 0;
             slides.forEach(slide => slide.classList.remove('active')); slides[slideIndex].classList.add('active');
         }
-        function mudarSlide(n) { clearInterval(carrosselTimer); slideIndex += n; mostrarSlide(slideIndex); iniciarIntervaloCarrossel(); }
-        function iniciarIntervaloCarrossel() { carrosselTimer = setInterval(() => { slideIndex++; mostrarSlide(slideIndex); }, 4000); }
+        function iniciarIntervaloCarrossel() { setInterval(() => { slideIndex++; mostrarSlide(); }, 4000); }
     </script>
 </body>
 </html>
+

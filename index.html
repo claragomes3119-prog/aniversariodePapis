@@ -6,22 +6,22 @@
     <title>46 Anos do Melhor Pai!</title>
     <!-- Vincula o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
-    <!-- Biblioteca de confetes oficial carregada via CDN seguro -->
-    <script src="https://jsdelivr.net"></script>
+    <!-- CORRIGIDO: Script oficial completo e estável da biblioteca de confetes -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
-    <!-- Reprodutor de Áudio Oculto (coloque seu arquivo de áudio com o nome musica.mp3 na mesma pasta) -->
+    <!-- Reprodutor de Áudio Oculto (Mantenha o arquivo musica.mp3 na mesma pasta) -->
     <audio id="musica-fundo" src="musica.mp3" loop></audio>
 
-    <!-- ETAPA 1: Tela de Bloqueio Inicial (Obrigatória para liberar o som no navegador) -->
+    <!-- ETAPA 1: Tela de Bloqueio Inicial (Obrigatória para liberar o som) -->
     <div id="tela-bloqueio">
         <h1>Pai, preparamos algo para você...</h1>
         <p>Clique abaixo para abrir</p>
         <button class="btn-entrar" onclick="revelarSitePrincipal()">ABRIR SURPRESA 🎁</button>
     </div>
 
-    <!-- ETAPA 2: O Conteúdo Principal do Site (Aparece logo após o primeiro clique) -->
+    <!-- ETAPA 2: O Conteúdo Principal do Site -->
     <div id="conteudo-site" style="display: none;">
         
         <!-- Cabeçalho Principal (Sem Menu de Navegação) -->
@@ -140,23 +140,22 @@
         </footer>
     </div>
 
-    <!-- Script de Execução Controlado -->
+    <!-- Script de Execução Corrigido -->
     <script>
-        // Transição Direta da Tela Inicial para a Homenagem
+        // Transição da Tela Inicial para a Homenagem
         function revelarSitePrincipal() {
-            // Liga a trilha sonora imediatamente
+            // Executa a música
             const musica = document.getElementById('musica-fundo');
             musica.play().catch(function(error) {
-                console.log("Áudio iniciado com sucesso após clique.");
+                console.log("Áudio iniciado.");
             });
 
-            // Gerencia as divisões de tela
+            // Atualiza os estados de visualização na tela
             document.getElementById('tela-bloqueio').style.display = 'none';
             document.getElementById('conteudo-site').style.display = 'block';
             
-            // Dispara a animação contínua de confetes por 10 segundos
+            // Dispara as rotinas gráficas e animações
             chuvaDeConfetesInicial();
-            // Inicia o movimento das fotos do carrossel
             iniciarIntervaloCarrossel(); 
         }
 
@@ -170,6 +169,7 @@
             }
         }
 
+        // CORRIGIDO: Nomeclatura e estrutura limpa sem interferência de caracteres corrompidos
         function chuvaDeConfetesInicial() {
             if (typeof confetti !== 'function') return;
             

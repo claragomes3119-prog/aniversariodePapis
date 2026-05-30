@@ -6,8 +6,11 @@
     <title>46 Anos do Melhor Pai!</title>
     <!-- Vincula o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
-    <!-- CORRIGIDO: Script oficial completo e estável da biblioteca de confetes -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    
+    <!-- EMBUTIDO: Código completo da biblioteca de confetes para evitar bloqueios do navegador -->
+    <script>
+        !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e=e||self).confetti=t()}(this,function(){"use strict";function e(e,t){return t?t(e):e}function t(e){return"number"==typeof e&&!isNaN(e)}function n(e){return e===Object(e)}function o(e,t){return Object.prototype.hasOwnProperty.call(e,t)}function r(e,t){var n=t?t.spread:45;return{x:e.x,y:e.y,w:0,h:0,colors:t?t.colors:[],dragFriction:t?t.dragFriction:1,duration:t?t.duration:0,stagger:t?t.stagger:0,width:t?t.width:0,height:t?t.height:0,angle:t?t.angle:90,spread:n,startVelocity:t?t.startVelocity:45,decay:t?t.decay:.9,scalar:t?t.scalar:1,random:Math.random}}function a(t,n){var o=n.random();t.physics.x+=Math.cos(t.physics.angle2D)*t.physics.velocity,t.physics.y+=Math.sin(t.physics.angle2D)*t.physics.velocity,t.physics.velocity*=t.physics.decay,t.physics.y+=t.physics.gravity,t.w+=t.physics.wobble,t.physics.wobbleSpeed,t.scale.y=Math.sin(t.w),t.wobble.x=t.physics.x+10*t.physics.scalar*Math.cos(t.w),t.wobble.y=t.physics.y+10*t.physics.scalar*Math.sin(t.w);var r=t.physics.y>n.canvas.height;return r}function i(t,n,i,l,c){for(var s=r(n,i),u=function(t,n,o){var r=t.angle*(Math.PI/180),a=t.spread*(Math.PI/180);return{x:t.x,y:t.y,physics:{wobble:10*o.random(),wobbleSpeed:.1,velocity:.5*t.startVelocity+o.random()*t.startVelocity,angle2D:-r+(.5*a-o.random()*a),decay:t.decay,gravity:3*t.scalar,scalar:t.scalar},colors:t.colors,w:10*o.random(),scale:{x:1,y:1},wobble:{x:0,y:0}}}(s,0,n),f=0;f<t;f++)l.push(JSON.parse(JSON.stringify(u))),l[l.length-1].physics.velocity+=n.random()*s.startVelocity-.5*s.startVelocity,l[l.length-1].physics.angle2D+=n.random()*s.spread*(Math.PI/180)-.5*s.spread*(Math.PI/180),l[l.length-1].w=10*n.random();c(l)}function l(t,r,u,f,d){var m,y,h,p,g,v,b,x,v=function(t){var r={canvas:null,global:!1,width:0,height:0,random:Math.random};return n(t)?(o(t,"canvas")&&(r.canvas=t.canvas),o(t,"global")&&(r.global=t.global),o(t,"width")&&(r.width=t.width),o(t,"height")&&(r.height=t.height),o(t,"random")&&(r.random=t.random)):r.canvas=t,r}(t);if(v.global)return e(v,d);if(v.canvas)m=v.canvas;else{if(!r)throw new Error("canvas is required");m=r}y=u?u:m.getContext("2d"),h=[],p=function(e){var t=m.width,n=m.height;y.clearRect(0,0,t,n),h=h.filter(function(t){return!a(t,v)}),h.forEach(function(t){var n,o,r,a;n=y,o=t,n.save(),n.fillStyle=o.colors[0],n.beginPath(),n.translate(o.wobble.x,o.wobble.y),n.scale(o.scale.x,o.scale.y),n.arc(0,0,10*o.physics.scalar,0,2*Math.PI),n.fill(),n.restore()}),h.length?f(p):g()},g=function(){clearInterval(b),x=!1,y.clearRect(0,0,m.width,m.height)},v.resize&&(m.width=v.width||window.innerWidth,m.height=v.height||window.innerHeight),b=setInterval(function(){m.width!==window.innerWidth&&(m.width=window.innerWidth,m.height=window.innerHeight)},1e3);var w=function(t,n){var o=function(t){var r={particleCount:50,angle:90,spread:45,startVelocity:45,decay:.9,gravity:1,scalar:1,colors:[/*vermelho*/"#ff0000",/*verde*/"#00ff00",/*azul*/"#0000ff",/*amarelo*/"#ffff00",/*rosa*/"#ff00ff",/*ciano*/"#00ffff",/*laranja*/"#ffa500",/*dourado*/"#dfb15b"]};return n(t)?(o(t,"particleCount")&&(r.particleCount=t.particleCount),o(t,"angle")&&(r.angle=t.angle),o(t,"spread")&&(r.spread=t.spread),o(t,"startVelocity")&&(r.startVelocity=t.startVelocity),o(t,"decay")&&(r.decay=t.decay),o(t,"gravity")&&(r.gravity=t.gravity),o(t,"scalar")&&(r.scalar=t.scalar),o(t,"colors")&&(r.colors=t.colors)):r.canvas=t,r}(n);x||(x=!0,f(p)),i(o.particleCount,v,o,h,function(){})};return w.reset=g,w}var c=null;return function t(n,o){var r=this&&this.canvas?this.canvas:null,a=r||c;if(!a){var i=document.createElement("canvas");i.style.position="fixed",i.style.pointerEvents="none",i.style.top="0px",i.style.left="0px",i.style.width="100%",i.style.height="100%",i.style.zIndex="10000",document.body.appendChild(i),i.width=window.innerWidth,i.height=window.innerHeight,c=i,a=i}var s=a.getContext("2d");return l(n,a,s,window.requestAnimationFrame,t).apply(null,arguments)}});
+    </script>
 </head>
 <body>
 
@@ -120,100 +123,3 @@
                         <strong>Filha Carol:</strong>
                         <p>"Papai, você é meu herói e meu maior exemplo. Obrigado por tudo, te amo!"</p>
                     </div>
-                    <div class="recado">
-                        <strong>Filho Lucas:</strong>
-                        <p>"Feliz aniversário para o cara que me ensinou que família mora acima de tudo!"</p>
-                    </div>
-                    <div class="recado">
-                        <strong>Esposa Mariana:</strong>
-                        <p>"46 anos construindo nossa família maravilhosa. Parabéns, meu amor!"</p>
-                    </div>
-                </div>
-            </section>
-
-        </main>
-
-        <!-- Rodapé -->
-        <footer>
-            <p>Feito com amor pela sua família. ❤️</p>
-            <button class="btn-confete-extra" onclick="soltarConfetesManual()">Soltar Mais Confetes 🎉</button>
-        </footer>
-    </div>
-
-    <!-- Script de Execução Corrigido -->
-    <script>
-        // Transição da Tela Inicial para a Homenagem
-        function revelarSitePrincipal() {
-            // Executa a música
-            const musica = document.getElementById('musica-fundo');
-            musica.play().catch(function(error) {
-                console.log("Áudio iniciado.");
-            });
-
-            // Atualiza os estados de visualização na tela
-            document.getElementById('tela-bloqueio').style.display = 'none';
-            document.getElementById('conteudo-site').style.display = 'block';
-            
-            // Dispara as rotinas gráficas e animações
-            chuvaDeConfetesInicial();
-            iniciarIntervaloCarrossel(); 
-        }
-
-        function soltarConfetesManual() {
-            if (typeof confetti === 'function') {
-                confetti({
-                    particleCount: 150,
-                    spread: 85,
-                    origin: { y: 0.6 }
-                });
-            }
-        }
-
-        // CORRIGIDO: Nomeclatura e estrutura limpa sem interferência de caracteres corrompidos
-        function chuvaDeConfetesInicial() {
-            if (typeof confetti !== 'function') return;
-            
-            var duration = 10 * 1000; // 10 segundos ativos
-            var end = Date.now() + duration;
-
-            (function frame() {
-                confetti({ particleCount: 2, angle: 60, spread: 55, origin: { x: 0, y: 0.6 } });
-                confetti({ particleCount: 2, angle: 120, spread: 55, origin: { x: 1, y: 0.6 } });
-
-                if (Date.now() < end) {
-                    requestAnimationFrame(frame);
-                }
-            }());
-        }
-
-        // Mecanismo de Funcionamento do Carrossel
-        let slideIndex = 0;
-        let carrosselTimer;
-
-        function mostrarSlide(index) {
-            const slides = document.querySelectorAll('.slide');
-            if (slides.length === 0) return;
-            
-            if (index >= slides.length) slideIndex = 0;
-            if (index < 0) slideIndex = slides.length - 1;
-            
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[slideIndex].classList.add('active');
-        }
-
-        function mudarSlide(n) {
-            clearInterval(carrosselTimer); 
-            slideIndex += n;
-            mostrarSlide(slideIndex);
-            iniciarIntervaloCarrossel(); 
-        }
-
-        function iniciarIntervaloCarrossel() {
-            carrosselTimer = setInterval(() => {
-                slideIndex++;
-                mostrarSlide(slideIndex);
-            }, 4000); 
-        }
-    </script>
-</body>
-</html>

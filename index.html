@@ -6,7 +6,7 @@
     <title>46 Anos do Melhor Pai!</title>
     <!-- Vincula o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
-    <!-- CORRIGIDO: Link oficial e completo da biblioteca de confetes -->
+    <!-- Biblioteca de confetes oficial carregada via CDN seguro -->
     <script src="https://jsdelivr.net"></script>
 </head>
 <body>
@@ -14,28 +14,14 @@
     <!-- Reprodutor de Áudio Oculto (coloque seu arquivo de áudio com o nome musica.mp3 na mesma pasta) -->
     <audio id="musica-fundo" src="musica.mp3" loop></audio>
 
-    <!-- ETAPA 1: Tela de Bloqueio Inicial -->
+    <!-- ETAPA 1: Tela de Bloqueio Inicial (Obrigatória para liberar o som no navegador) -->
     <div id="tela-bloqueio">
         <h1>Pai, preparamos algo para você...</h1>
         <p>Clique abaixo para abrir</p>
-        <button class="btn-entrar" onclick="avancarParaOBolo()">ABRIR SURPRESA 🎁</button>
+        <button class="btn-entrar" onclick="revelarSitePrincipal()">ABRIR SURPRESA 🎁</button>
     </div>
 
-    <!-- ETAPA 2: Tela do Bolo Animado -->
-    <div id="tela-bolo" style="display: none;">
-        <div class="bolo-container">
-            <div class="vela">
-                <div class="chama" id="fogo-vela"></div>
-            </div>
-            <div class="bolo-topo"></div>
-            <div class="bolo-base"></div>
-        </div>
-        <h1>Feliz Aniversário, Pai! 🎉</h1>
-        <p>Apague a vela para ver o que sua família preparou.</p>
-        <button class="btn-entrar" onclick="revelarSitePrincipal()">APAGAR A VELA 🎂</button>
-    </div>
-
-    <!-- ETAPA 3: O Conteúdo Principal do Site -->
+    <!-- ETAPA 2: O Conteúdo Principal do Site (Aparece logo após o primeiro clique) -->
     <div id="conteudo-site" style="display: none;">
         
         <!-- Cabeçalho Principal (Sem Menu de Navegação) -->
@@ -78,7 +64,7 @@
                 </div>
             </section>
 
-            <!-- INTEGRAÇÃO: NOVA LINHA DO TEMPO VERTICAL COMPLETA -->
+            <!-- LINHA DO TEMPO VERTICAL COMPLETA -->
             <section class="bloco-conteudo">
                 <h3>A Linha do Tempo da Vida Dele</h3>
                 <div class="linha-tempo-vertical">
@@ -154,28 +140,23 @@
         </footer>
     </div>
 
-    <!-- Script de Execução Corrigido -->
+    <!-- Script de Execução Controlado -->
     <script>
-        // Transição Etapa 1 para Etapa 2
-        function avancarParaOBolo() {
-            document.getElementById('tela-bloqueio').style.display = 'none';
-            document.getElementById('tela-bolo').style.display = 'flex';
-        }
-
-        // Transição Etapa 2 para Etapa 3 (Revelação)
+        // Transição Direta da Tela Inicial para a Homenagem
         function revelarSitePrincipal() {
-            const chama = document.getElementById('fogo-vela');
-            if(chama) chama.style.display = 'none';
-
+            // Liga a trilha sonora imediatamente
             const musica = document.getElementById('musica-fundo');
             musica.play().catch(function(error) {
-                console.log("Áudio iniciado com sucesso.");
+                console.log("Áudio iniciado com sucesso após clique.");
             });
 
-            document.getElementById('tela-bolo').style.display = 'none';
+            // Gerencia as divisões de tela
+            document.getElementById('tela-bloqueio').style.display = 'none';
             document.getElementById('conteudo-site').style.display = 'block';
             
+            // Dispara a animação contínua de confetes por 10 segundos
             chuvaDeConfetesInicial();
+            // Inicia o movimento das fotos do carrossel
             iniciarIntervaloCarrossel(); 
         }
 
@@ -230,3 +211,9 @@
         function iniciarIntervaloCarrossel() {
             carrosselTimer = setInterval(() => {
                 slideIndex++;
+                mostrarSlide(slideIndex);
+            }, 4000); 
+        }
+    </script>
+</body>
+</html>

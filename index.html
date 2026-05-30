@@ -9,15 +9,15 @@
     
     <!-- EMBUTIDO: Código completo da biblioteca de confetes para evitar bloqueios do navegador -->
     <script>
-        !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e=e||self).confetti=t()}(this,function(){"use strict";function e(e,t){return t?t(e):e}function t(e){return"number"==typeof e&&!isNaN(e)}function n(e){return e===Object(e)}function o(e,t){return Object.prototype.hasOwnProperty.call(e,t)}function r(e,t){var n=t?t.spread:45;return{x:e.x,y:e.y,w:0,h:0,colors:t?t.colors:[],dragFriction:t?t.dragFriction:1,duration:t?t.duration:0,stagger:t?t.stagger:0,width:t?t.width:0,height:t?t.height:0,angle:t?t.angle:90,spread:n,startVelocity:t?t.startVelocity:45,decay:t?t.decay:.9,scalar:t?t.scalar:1,random:Math.random}}function a(t,n){var o=n.random();t.physics.x+=Math.cos(t.physics.angle2D)*t.physics.velocity,t.physics.y+=Math.sin(t.physics.angle2D)*t.physics.velocity,t.physics.velocity*=t.physics.decay,t.physics.y+=t.physics.gravity,t.w+=t.physics.wobble,t.physics.wobbleSpeed,t.scale.y=Math.sin(t.w),t.wobble.x=t.physics.x+10*t.physics.scalar*Math.cos(t.w),t.wobble.y=t.physics.y+10*t.physics.scalar*Math.sin(t.w);var r=t.physics.y>n.canvas.height;return r}function i(t,n,i,l,c){for(var s=r(n,i),u=function(t,n,o){var r=t.angle*(Math.PI/180),a=t.spread*(Math.PI/180);return{x:t.x,y:t.y,physics:{wobble:10*o.random(),wobbleSpeed:.1,velocity:.5*t.startVelocity+o.random()*t.startVelocity,angle2D:-r+(.5*a-o.random()*a),decay:t.decay,gravity:3*t.scalar,scalar:t.scalar},colors:t.colors,w:10*o.random(),scale:{x:1,y:1},wobble:{x:0,y:0}}}(s,0,n),f=0;f<t;f++)l.push(JSON.parse(JSON.stringify(u))),l[l.length-1].physics.velocity+=n.random()*s.startVelocity-.5*s.startVelocity,l[l.length-1].physics.angle2D+=n.random()*s.spread*(Math.PI/180)-.5*s.spread*(Math.PI/180),l[l.length-1].w=10*n.random();c(l)}function l(t,r,u,f,d){var m,y,h,p,g,v,b,x,v=function(t){var r={canvas:null,global:!1,width:0,height:0,random:Math.random};return n(t)?(o(t,"canvas")&&(r.canvas=t.canvas),o(t,"global")&&(r.global=t.global),o(t,"width")&&(r.width=t.width),o(t,"height")&&(r.height=t.height),o(t,"random")&&(r.random=t.random)):r.canvas=t,r}(t);if(v.global)return e(v,d);if(v.canvas)m=v.canvas;else{if(!r)throw new Error("canvas is required");m=r}y=u?u:m.getContext("2d"),h=[],p=function(e){var t=m.width,n=m.height;y.clearRect(0,0,t,n),h=h.filter(function(t){return!a(t,v)}),h.forEach(function(t){var n,o,r,a;n=y,o=t,n.save(),n.fillStyle=o.colors[0],n.beginPath(),n.translate(o.wobble.x,o.wobble.y),n.scale(o.scale.x,o.scale.y),n.arc(0,0,10*o.physics.scalar,0,2*Math.PI),n.fill(),n.restore()}),h.length?f(p):g()},g=function(){clearInterval(b),x=!1,y.clearRect(0,0,m.width,m.height)},v.resize&&(m.width=v.width||window.innerWidth,m.height=v.height||window.innerHeight),b=setInterval(function(){m.width!==window.innerWidth&&(m.width=window.innerWidth,m.height=window.innerHeight)},1e3);var w=function(t,n){var o=function(t){var r={particleCount:50,angle:90,spread:45,startVelocity:45,decay:.9,gravity:1,scalar:1,colors:[/*vermelho*/"#ff0000",/*verde*/"#00ff00",/*azul*/"#0000ff",/*amarelo*/"#ffff00",/*rosa*/"#ff00ff",/*ciano*/"#00ffff",/*laranja*/"#ffa500",/*dourado*/"#dfb15b"]};return n(t)?(o(t,"particleCount")&&(r.particleCount=t.particleCount),o(t,"angle")&&(r.angle=t.angle),o(t,"spread")&&(r.spread=t.spread),o(t,"startVelocity")&&(r.startVelocity=t.startVelocity),o(t,"decay")&&(r.decay=t.decay),o(t,"gravity")&&(r.gravity=t.gravity),o(t,"scalar")&&(r.scalar=t.scalar),o(t,"colors")&&(r.colors=t.colors)):r.canvas=t,r}(n);x||(x=!0,f(p)),i(o.particleCount,v,o,h,function(){})};return w.reset=g,w}var c=null;return function t(n,o){var r=this&&this.canvas?this.canvas:null,a=r||c;if(!a){var i=document.createElement("canvas");i.style.position="fixed",i.style.pointerEvents="none",i.style.top="0px",i.style.left="0px",i.style.width="100%",i.style.height="100%",i.style.zIndex="10000",document.body.appendChild(i),i.width=window.innerWidth,i.height=window.innerHeight,c=i,a=i}var s=a.getContext("2d");return l(n,a,s,window.requestAnimationFrame,t).apply(null,arguments)}});
+        !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e=e||self).confetti=t()}(this,function(){"use strict";function e(e,t){return t?t(e):e}function t(e){return"number"==typeof e&&!isNaN(e)}function n(e){return e===Object(e)}function o(e,t){return Object.prototype.hasOwnProperty.call(e,t)}function r(e,t){var n=t?t.spread:45;return{x:e.x,y:e.y,w:0,h:0,colors:t?t.colors:[],dragFriction:t?t.dragFriction:1,duration:t?t.duration:0,stagger:t?t.stagger:0,width:t?t.width:0,height:t?t.height:0,angle:t?t.angle:90,spread:n,startVelocity:t?t.startVelocity:45,decay:t?t.decay:.9,scalar:t?t.scalar:1,random:Math.random}}function a(t,n){var o=n.random();t.physics.x+=Math.cos(t.physics.angle2D)*t.physics.velocity,t.physics.y+=Math.sin(t.physics.angle2D)*t.physics.velocity,t.physics.velocity*=t.physics.decay,t.physics.y+=t.physics.gravity,t.w+=t.physics.wobble,t.physics.wobbleSpeed,t.scale.y=Math.sin(t.w),t.wobble.x=t.physics.x+10*t.physics.scalar*Math.cos(t.w),t.wobble.y=t.physics.y+10*t.physics.scalar*Math.sin(t.w);var r=t.physics.y>n.canvas.height;return r}function i(t,n,i,l,c){for(var s=r(n,i),u=function(t,n,o){var r=t.angle*(Math.PI/180),a=t.spread*(Math.PI/180);return{x:t.x,y:t.y,physics:{wobble:10*o.random(),wobbleSpeed:.1,velocity:.5*t.startVelocity+o.random()*t.startVelocity,angle2D:-r+(.5*a-o.random()*a),decay:t.decay,gravity:3*t.scalar,scalar:t.scalar},colors:t.colors,w:10*o.random(),scale:{x:1,y:1},wobble:{x:0,y:0}}}(s,0,n),f=0;f<t;f++)l.push(JSON.parse(JSON.stringify(u))),l[l.length-1].physics.velocity+=n.random()*s.startVelocity-.5*s.startVelocity,l[l.length-1].physics.angle2D+=n.random()*s.spread*(Math.PI/180)-.5*s.spread*(Math.PI/180),l[l.length-1].w=10*n.random();c(l)}function l(t,r,u,f,d){var m,y,h,p,g,v,b,x,v=function(t){var r={canvas:null,global:!1,width:0,height:0,random:Math.random};return n(t)?(o(t,"canvas")&&(r.canvas=t.canvas),o(t,"global")&&(r.global=t.global),o(t,"width")&&(r.width=t.width),o(t,"height")&&(r.height=t.height),o(t,"random")&&(r.random=t.random)):r.canvas=t,r}(t);if(v.global)return e(v,d);if(v.canvas)m=v.canvas;else{if(!r)throw new Error("canvas is required");m=r}y=u?u:m.getContext("2d"),h=[],p=function(e){var t=m.width,n=m.height;y.clearRect(0,0,t,n),h=h.filter(function(t){return!a(t,v)}),h.forEach(function(t){var n,o,r,a;n=y,o=t,n.save(),n.fillStyle=o.colors,n.beginPath(),n.translate(o.wobble.x,o.wobble.y),n.scale(o.scale.x,o.scale.y),n.arc(0,0,10*o.physics.scalar,0,2*Math.PI),n.fill(),n.restore()}),h.length?f(p):g()},g=function(){clearInterval(b),x=!1,y.clearRect(0,0,m.width,m.height)},v.resize&&(m.width=v.width||window.innerWidth,m.height=v.height||window.innerHeight),b=setInterval(function(){m.width!==window.innerWidth&&(m.width=window.innerWidth,m.height=window.innerHeight)},1e3);var w=function(t,n){var o=function(t){var r={particleCount:50,angle:90,spread:45,startVelocity:45,decay:.9,gravity:1,scalar:1,colors:["#ff0000","#00ff00","#0000ff","#ffff00","#ff00ff","#00ffff","#ffa500","#dfb15b"]};return n(t)?(o(t,"particleCount")&&(r.particleCount=t.particleCount),o(t,"angle")&&(r.angle=t.angle),o(t,"spread")&&(r.spread=t.spread),o(t,"startVelocity")&&(r.startVelocity=t.startVelocity),o(t,"decay")&&(r.decay=t.decay),o(t,"gravity")&&(r.gravity=t.gravity),o(t,"scalar")&&(r.scalar=t.scalar),o(t,"colors")&&(r.colors=t.colors)):r.canvas=t,r}(n);x||(x=!0,f(p)),i(o.particleCount,v,o,h,function(){})};return w.reset=g,w}var c=null;return function t(n,o){var r=this&&this.canvas?this.canvas:null,a=r||c;if(!a){var i=document.createElement("canvas");i.style.position="fixed",i.style.pointerEvents="none",i.style.top="0px",i.style.left="0px",i.style.width="100%",i.style.height="100%",i.style.zIndex="10000",document.body.appendChild(i),i.width=window.innerWidth,i.height=window.innerHeight,c=i,a=i}var s=a.getContext("2d");return l(n,a,s,window.requestAnimationFrame,t).apply(null,arguments)}});
     </script>
 </head>
 <body>
 
-    <!-- Reprodutor de Áudio Oculto (Mantenha o arquivo musica.mp3 na mesma pasta) -->
+    <!-- Reprodutor de Áudio Oculto -->
     <audio id="musica-fundo" src="musica.mp3" loop></audio>
 
-    <!-- ETAPA 1: Tela de Bloqueio Inicial (Obrigatória para liberar o som) -->
+    <!-- ETAPA 1: Tela de Bloqueio Inicial -->
     <div id="tela-bloqueio">
         <h1>Pai, preparamos algo para você...</h1>
         <p>Clique abaixo para abrir</p>
@@ -27,7 +27,7 @@
     <!-- ETAPA 2: O Conteúdo Principal do Site -->
     <div id="conteudo-site" style="display: none;">
         
-        <!-- Cabeçalho Principal (Sem Menu de Navegação) -->
+        <!-- Cabeçalho Principal -->
         <header>
             <div class="header-conteudo">
                 <h2>46 Anos do Melhor Pai</h2>
@@ -38,76 +38,78 @@
         <!-- Container de Seção Única -->
         <main class="container">
             
-            <!-- CARROSSEL DE IMAGENS AUTOMÁTICO (SEM LEGENDAS) -->
+            <!-- CARROSSEL DE IMAGENS AUTOMÁTICO (6 FOTOS E SEM LEGENDAS) -->
             <section class="bloco-conteudo">
                 <h3>Álbum de Fotos</h3>
                 <div class="carrossel-container">
                     <div class="carrossel-slides">
-                        <!-- Foto 1 -->
                         <div class="slide active">
                             <img src="https://unsplash.com" alt="Foto 1">
                         </div>
-                        <!-- Foto 2 -->
                         <div class="slide">
                             <img src="https://unsplash.com" alt="Foto 2">
                         </div>
-                        <!-- Foto 3 -->
                         <div class="slide">
                             <img src="https://unsplash.com" alt="Foto 3">
                         </div>
-                        <!-- Foto 4 -->
                         <div class="slide">
                             <img src="https://unsplash.com" alt="Foto 4">
                         </div>
+                        <div class="slide">
+                            <img src="https://unsplash.com" alt="Foto 5">
+                        </div>
+                        <div class="slide">
+                            <img src="https://unsplash.com" alt="Foto 6">
+                        </div>
                     </div>
                     
-                    <!-- Botões de Navegação do Carrossel -->
                     <button class="carrossel-btn btn-prev" onclick="mudarSlide(-1)">❮</button>
                     <button class="carrossel-btn btn-next" onclick="mudarSlide(1)">❯</button>
                 </div>
             </section>
 
-            <!-- LINHA DO TEMPO VERTICAL COMPLETA -->
+            <!-- LINHA DO TEMPO VERTICAL COMPLETA (SEM AS DATAS) -->
             <section class="bloco-conteudo">
                 <h3>A Linha do Tempo da Vida Dele</h3>
                 <div class="linha-tempo-vertical">
                     
                     <!-- Marco 1 -->
                     <div class="marco-item">
-                        <div class="marco-ano">1980</div>
+                        <!-- ALTERADO: Substituído o número da data por um emoji -->
+                        <div class="marco-ano">👶</div>
                         <div class="marco-conteudo-box">
-                            <img src="https://unsplash.com" alt="Anos 80">
-                            <h4>O Começo de Tudo 👶</h4>
+                            <img src="https://unsplash.com" alt="Infância">
+                            <h4>O Começo de Tudo</h4>
                             <p>O nascimento do garoto que cresceria para se tornar o melhor pai do mundo. Aqui começava a sua história!</p>
                         </div>
                     </div>
 
                     <!-- Marco 2 -->
                     <div class="marco-item">
-                        <div class="marco-ano">2005</div>
+                        <div class="marco-ano">💍</div>
                         <div class="marco-conteudo-box">
                             <img src="https://unsplash.com" alt="Casamento">
-                            <h4>O Grande Sim 💍</h4>
+                            <h4>O Grande Sim</h4>
                             <p>O dia do casamento e o início da construção da nossa família maravilhosa. Um passo inesquecível!</p>
                         </div>
                     </div>
 
                     <!-- Marco 3 -->
                     <div class="marco-item">
-                        <div class="marco-ano">2010</div>
+                        <div class="marco-ano">🍼</div>
                         <div class="marco-conteudo-box">
                             <img src="https://unsplash.com" alt="Pai">
-                            <h4>Modo Pai Ativado 🍼</h4>
+                            <h4>Modo Pai Ativado</h4>
                             <p>A chegada dos filhos e a descoberta do amor mais puro. O início da jornada como nosso grande herói.</p>
                         </div>
                     </div>
 
                     <!-- Marco 4 -->
                     <div class="marco-item">
-                        <div class="marco-ano">2026</div>
+                        <div class="marco-ano">🎂</div>
                         <div class="marco-conteudo-box">
                             <img src="https://unsplash.com" alt="Hoje">
-                            <h4>46 Anos de História 🎂</h4>
+                            <h4>46 Anos de História</h4>
                             <p>Hoje celebramos a sua vida, suas conquistas e o privilégio que é ter você por perto todos os dias!</p>
                         </div>
                     </div>
@@ -121,5 +123,3 @@
                 <div class="mural">
                     <div class="recado">
                         <strong>Filha Carol:</strong>
-                        <p>"Papai, você é meu herói e meu maior exemplo. Obrigado por tudo, te amo!"</p>
-                    </div>

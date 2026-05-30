@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>46 Anos do Melhor Pai!</title>
+    <!-- Vincula o arquivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Biblioteca externa para os confetes -->
+    <script src="https://jsdelivr.net"></script>
+</head>
+<body>
+
+    <!-- Áudio Oculto (coloque o arquivo musica.mp3 na mesma pasta) -->
+    <audio id="musica-fundo" src="musica.mp3" loop></audio>
+
+    <!-- Tela Inicial Interativa (Bloqueio) -->
+    <div id="tela-entrada">
+        <h1>Pai, preparamos uma surpresa...</h1>
+        <p>Clique no botão abaixo para entrar</p>
+        <button class="btn-entrar" onclick="iniciarSurpresa()">ABRIR SURPRESA 🎁</button>
+    </div>
+
+    <!-- Cabeçalho do Site -->
+    <header>
+        <h2>46 Anos do Melhor Pai</h2>
+        <p>Uma homenagem de toda a sua família que te ama muito!</p>
+    </header>
+
+    <!-- Menu de Navegação -->
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Nossos Momentos</a>
+        <a href="#">Mural de Mensagens</a>
+        <a href="#">Linha do Tempo</a>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        
+        <!-- Seção Linha do Tempo -->
+        <section>
+            <h3>Uma Jornada de Amor e Memórias</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <img src="https://unsplash.com" alt="Anos 80">
+                    <span>Anos 80/90</span>
+                </div>
+                <div class="timeline-item">
+                    <img src="https://unsplash.com" alt="Casamento">
+                    <span>O Casamento</span>
+                </div>
+                <div class="timeline-item">
+                    <img src="https://unsplash.com" alt="Pai">
+                    <span>Modo Pai Ativado</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Mensagens do Mural -->
+        <section>
+            <h3>Mensagens do Mural</h3>
+            <div class="mural">
+                <div class="recado">
+                    <strong>Filha Carol:</strong>
+                    <p>"Papai, você é meu herói e meu maior exemplo. Obrigado por tudo, te amo!"</p>
+                </div>
+                <div class="recado">
+                    <strong>Filho Lucas:</strong>
+                    <p>"Feliz aniversário para o cara que me ensinou que família mora acima de tudo!"</p>
+                </div>
+                <div class="recado">
+                    <strong>Esposa Mariana:</strong>
+                    <p>"46 anos construindo nossa família maravilhosa. Parabéns, meu amor!"</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>Feito com amor pela sua família em 2026. ❤️</p>
+        <button class="btn-confete-extra" onclick="soltarConfetes()">Soltar Mais Confetes 🎉</button>
+    </footer>
+
+    <!-- Lógica JavaScript -->
+    <script>
+        function iniciarSurpresa() {
+            const musica = document.getElementById('musica-fundo');
+            musica.play().catch(error => {
+                console.log("O navegador bloqueou a reprodução automática.");
+            });
+
+            const tela = document.getElementById('tela-entrada');
+            tela.style.opacity = '0';
+            setTimeout(() => {
+                tela.style.display = 'none';
+            }, 800);
+
+            soltarConfetesEspeciais();
+        }
+
+        function soltarConfetes() {
+            confetti({
+                particleCount: 150,
+                spread: 80,
+                origin: { y: 0.6 }
+            });
+        }
+
+        function soltarConfetesEspeciais() {
+            var duration = 4 * 1000;
+            var end = Date.now() + duration;
+
+            (function frame() {
+                confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 } });
+                confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 } });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+    </script>
+</body>
+</html>

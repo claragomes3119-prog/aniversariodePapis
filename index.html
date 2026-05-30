@@ -7,24 +7,38 @@
     <!-- Vincula o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
     <!-- Biblioteca externa oficial para os confetes -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="https://jsdelivr.net"></script>
 </head>
 <body>
 
-    <!-- Reprodutor de Áudio Oculto (Mantenha o arquivo musica.mp3 nesta mesma pasta) -->
+    <!-- Reprodutor de Áudio Oculto -->
     <audio id="musica-fundo" src="musica.mp3" loop></audio>
 
-    <!-- Tela Inicial Interativa (Remove o bloqueio de som dos navegadores) -->
-    <div id="tela-entrada">
-        <h1>Pai, preparamos uma surpresa...</h1>
-        <p>Clique no botão abaixo para entrar</p>
-        <button class="btn-entrar" onclick="iniciarSurpresa()">ABRIR SURPRESA 🎁</button>
+    <!-- ETAPA 1: Tela de Bloqueio Inicial (Liberação do Áudio) -->
+    <div id="tela-bloqueio">
+        <h1>Pai, preparamos algo para você...</h1>
+        <p>Clique abaixo para abrir</p>
+        <button class="btn-entrar" onclick="avancarParaOBolo()">ABRIR SURPRESA 🎁</button>
     </div>
 
-    <!-- O Conteúdo Principal do Site (Fica escondido até o clique) -->
+    <!-- ETAPA 2: Tela do Bolo Animado (Aparece após o primeiro clique) -->
+    <div id="tela-bolo" style="display: none;">
+        <div class="bolo-container">
+            <div class="vela">
+                <div class="chama" id="fogo-vela"></div>
+            </div>
+            <div class="bolo-topo"></div>
+            <div class="bolo-base"></div>
+        </div>
+        <h1>Feliz Aniversário, Pai! 🎉</h1>
+        <p>Apague a vela para ver o que sua família preparou.</p>
+        <button class="btn-entrar" onclick="revelarSitePrincipal()">APAGAR A VELA 🎂</button>
+    </div>
+
+    <!-- ETAPA 3: O Conteúdo Principal do Site (Revelado por último) -->
     <div id="conteudo-site" style="display: none;">
         
-        <!-- Cabeçalho Principal (Sem nenhum menu de navegação) -->
+        <!-- Cabeçalho Principal -->
         <header>
             <div class="header-conteudo">
                 <h2>46 Anos do Melhor Pai</h2>
@@ -106,31 +120,43 @@
 
         </main>
 
-        <!-- Rodapé do Site -->
+        <!-- Rodapé -->
         <footer>
             <p>Feito com amor pela sua família. ❤️</p>
             <button class="btn-confete-extra" onclick="soltarConfetesManual()">Soltar Mais Confetes 🎉</button>
         </footer>
     </div>
 
-    <!-- Script Corrigido para Execução dos Eventos -->
+    <!-- Script da Surpresa em Etapas -->
     <script>
-        function iniciarSurpresa() {
-            // 1. Toca a música de fundo
-            const musica = document.getElementById('musica-fundo');
-            musica.play().catch(function(error) {
-                console.log("A reprodução automática foi gerenciada pelo navegador.");
-            });
-
-            // 2. Remove a tela de entrada e exibe a página principal imediatamente
-            document.getElementById('tela-entrada').style.display = 'none';
-            document.getElementById('conteudo-site').style.display = 'block';
-
-            // 3. Dispara a grande animação de confetes de abertura
-            chuvaDeConfetesInicial();
+        // Etapa 1 -> Etapa 2
+        function avancarParaOBolo() {
+            document.getElementById('tela-bloqueio').style.display = 'none';
+            document.getElementById('tela-bolo').style.display = 'flex';
         }
 
-        // Função do botão manual do rodapé
+        // Etapa 2 -> Etapa 3 (Revelação Final)
+        function revelarSitePrincipal() {
+            // 1. Apaga visualmente o fogo da vela
+            const chama = document.getElementById('fogo-vela');
+            if(chama) chama.style.display = 'none';
+
+            // 2. Dá início à trilha sonora de fundo
+            const musica = document.getElementById('musica-fundo');
+            musica.play().catch(function(error) {
+                console.log("Áudio iniciado.");
+            });
+
+            // 3. Pequeno atraso de 400ms para simular o "assopro" e abrir o site
+            setTimeout(function() {
+                document.getElementById('tela-bolo').style.display = 'none';
+                document.getElementById('conteudo-site').style.display = 'block';
+                
+                // 4. Inicia a grande chuva de confetes duradoura por 10 segundos
+                chuvaDeConfetesInicial();
+            }, 400);
+        }
+
         function soltarConfetesManual() {
             if (typeof confetti === 'function') {
                 confetti({
@@ -141,16 +167,15 @@
             }
         }
 
-        // Animação prolongada automática das laterais
         function chuvaDeConfetesInicial() {
             if (typeof confetti !== 'function') return;
             
-            var duration = 4 * 1000;
+            var duration = 10 * 1000; 
             var end = Date.now() + duration;
 
             (function frame() {
-                confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0, y: 0.6 } });
-                confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1, y: 0.6 } });
+                confetti({ particleCount: 2, angle: 60, spread: 55, origin: { x: 0, y: 0.6 } });
+                confetti({ particleCount: 2, angle: 120, spread: 55, origin: { x: 1, y: 0.6 } });
 
                 if (Date.now() < end) {
                     requestAnimationFrame(frame);

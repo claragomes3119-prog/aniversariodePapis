@@ -16,21 +16,21 @@
             }
             const ctx = canvas.getContext('2d');
             canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500', '#dfb15b'], particles = [];
+            const colors = ['#ff0055', '#00ffcc', '#9900ff', '#ffcc00', '#ff00ff', '#00ff00', '#ff5500', '#0066ff'], particles = [];
             window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
             function criar(lado) {
                 return {
                     x: lado === 'esquerda' ? 0 : canvas.width, y: canvas.height * 0.6,
-                    vx: lado === 'esquerda' ? (Math.random() * 7 + 4) : -(Math.random() * 7 + 4),
-                    vy: -(Math.random() * 12 + 8), size: Math.random() * 6 + 6,
-                    color: colors[Math.floor(Math.random() * colors.length)], gravity: 0.3,
-                    rotation: Math.random() * 360, rSpeed: Math.random() * 4 - 2
+                    vx: lado === 'esquerda' ? (Math.random() * 9 + 5) : -(Math.random() * 9 + 5),
+                    vy: -(Math.random() * 14 + 9), size: Math.random() * 7 + 6,
+                    color: colors[Math.floor(Math.random() * colors.length)], gravity: 0.25,
+                    rotation: Math.random() * 360, rSpeed: Math.random() * 6 - 3
                 };
             }
             function frame() {
                 if (Date.now() > animationEnd) { ctx.clearRect(0, 0, canvas.width, canvas.height); canvas.remove(); return; }
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                if (particles.length < 150) { particles.push(criar('esquerda')); particles.push(criar('direita')); }
+                if (particles.length < 180) { particles.push(criar('esquerda')); particles.push(criar('direita')); }
                 for (let i = particles.length - 1; i >= 0; i--) {
                     const p = particles[i]; p.x += p.vx; p.y += p.vy; p.vy += p.gravity; p.rotation += p.rSpeed;
                     ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rotation * Math.PI / 180);
@@ -48,23 +48,24 @@
     <audio id="musica-fundo" src="musica.mp3" loop></audio>
 
     <div id="tela-bloqueio">
-        <h1>Pai, preparamos algo para você...</h1>
-        <p>Clique abaixo para abrir</p>
-        <button class="btn-entrar" onclick="revelarSitePrincipal()">ABRIR SURPRESA 🎁</button>
+        <span style="font-size: 3.5rem; margin-bottom: 10px; animation: pulse 1s infinite alternate;">🎁</span>
+        <h1>Pai, preparamos uma surpresa...</h1>
+        <p>Clique abaixo para abrir essa festa!</p>
+        <button class="btn-entrar" onclick="revelarSitePrincipal()">ABRIR SURPRESA 🎉</button>
     </div>
 
     <div id="conteudo-site" style="display: none;">
         <header>
             <div class="header-conteudo">
-                <h2>46 Anos do Melhor Pai</h2>
-                <p>Uma homenagem de toda a sua família que te ama muito!</p>
+                <h2>🎉 46 Anos do Melhor Pai 🎉</h2>
+                <p>Uma homenagem super colorida de toda a sua família que te ama demais!</p>
             </div>
         </header>
 
         <main class="container">
             <!-- CARROSSEL DE IMAGENS AUTOMÁTICO -->
             <section class="bloco-conteudo">
-                <h3>Álbum de Fotos</h3>
+                <h3 class="titulo-carrossel">📸 Álbum de Fotos</h3>
                 <div class="carrossel-container">
                     <div class="carrossel-slides">
                         <div class="slide active"><img src="imagens/f1.jpg" alt="Foto 1"></div>
@@ -77,30 +78,39 @@
                 </div>
             </section>
 
-            <!-- NOVO: QUADRO CENTRAL DE HOMENAGEM COM UMA MENSAGEM -->
-            <section class="bloco-conteudo">
-                <div style="text-align: center; padding: 20px 10px;">
-                    <span style="font-size: 3rem;">❤️</span>
-                    <h3 style="border-bottom: none; margin-bottom: 15px; margin-top: 10px;">Querido Pai,</h3>
-                    <p style="font-size: 1.2rem; line-height: 1.8; color: #333; max-width: 700px; margin: 0 auto; font-style: italic;">
+            <!-- QUADRO CENTRAL DE HOMENAGEM COM UMA MENSAGEM -->
+            <section class="bloco-conteudo quadro-mensagem-colorido">
+                <div style="text-align: center; padding: 10px;">
+                    <span style="font-size: 3.5rem; display: block; animation: float 2s infinite ease-in-out;">❤️</span>
+                    <h3 style="border-bottom: none; margin-bottom: 15px; margin-top: 10px; color: #fff;">Querido Pai,</h3>
+                    <p style="font-size: 1.25rem; line-height: 1.8; color: #fff; max-width: 700px; margin: 0 auto; font-style: italic; font-weight: 500;">
                         "Celebrar os seus 46 anos é celebrar a nossa maior inspiração. Obrigado por ser nosso porto seguro, nosso guia e o herói de todas as nossas histórias. Cada foto e cada lembrança neste site carrega um pedaço do amor gigante que sentimos por você. Que o seu dia seja tão incrível quanto o tamanho do seu coração. Feliz Aniversário!"
                     </p>
                 </div>
             </section>
 
-            <!-- MURAL DE MENSAGENS -->
+            <!-- MURAL DE MENSAGENS COM CORES DINÂMICAS -->
             <section class="bloco-conteudo">
-                <h3>Mensagens do Mural</h3>
+                <h3 class="titulo-mural">💬 Mensagens do Mural</h3>
                 <div class="mural">
-                    <div class="recado"><strong>Filha Carol:</strong><p>"Papai, você é meu herói e meu maior exemplo. Obrigado por tudo, te amo!"</p></div>
-                    <div class="recado"><strong>Filho Lucas:</strong><p>"Feliz aniversário para o cara que me ensinou que família mora acima de tudo!"</p></div>
-                    <div class="recado"><strong>Esposa Mariana:</strong><p>"46 anos construindo nossa família maravilhosa. Parabéns, meu amor!"</p></div>
+                    <div class="recado cor-rosa">
+                        <strong>Filha Carol ✨</strong>
+                        <p>"Papai, você é meu herói e meu maior exemplo. Obrigado por tudo, te amo!"</p>
+                    </div>
+                    <div class="recado cor-azul">
+                        <strong>Filho Lucas 🚀</strong>
+                        <p>"Feliz aniversário para o cara que me ensinou que família mora acima de tudo!"</p>
+                    </div>
+                    <div class="recado cor-verde">
+                        <strong>Esposa Mariana 💝</strong>
+                        <p>"46 anos construindo nossa família maravilhosa. Parabéns, meu amor!"</p>
+                    </div>
                 </div>
             </section>
         </main>
 
         <footer>
-            <p>Feito com amor pela sua família. ❤️</p>
+            <p>Feito com todo o amor e cor do mundo pela sua família! ❤️🎈</p>
         </footer>
     </div>
 
@@ -110,17 +120,26 @@
             musica.play().catch(function(error) { console.log("Áudio liberado pós clique."); });
             document.getElementById('tela-bloqueio').style.display = 'none';
             document.getElementById('conteudo-site').style.display = 'block';
+            
             dispararChuvaDeConfetes();
             iniciarIntervaloCarrossel(); 
+            
+            const imagensDoCarrossel = document.querySelectorAll('.slide img');
+            imagensDoCarrossel.forEach(img => {
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'contain';
+                img.style.display = 'block';
+            });
         }
-        let slideIndex = 0;
+        let slideIndex = 0, carrosselTimer;
         function mostrarSlide() {
             const slides = document.querySelectorAll('.slide'); if (slides.length === 0) return;
             if (slideIndex >= slides.length) slideIndex = 0;
             slides.forEach(slide => slide.classList.remove('active')); slides[slideIndex].classList.add('active');
         }
-        function iniciarIntervaloCarrossel() { setInterval(() => { slideIndex++; mostrarSlide(); }, 4000); }
+        function mudarSlide(n) { clearInterval(carrosselTimer); slideIndex += n; mostrarSlide(); iniciarIntervaloCarrossel(); }
+        function iniciarIntervaloCarrossel() { carrosselTimer = setInterval(() => { slideIndex++; mostrarSlide(); }, 4000); }
     </script>
 </body>
 </html>
-

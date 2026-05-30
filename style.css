@@ -134,7 +134,7 @@ header p {
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    background-color: #0d1726; /* Fundo escuro para combinar com o tema do site */
+    background-color: #ffffff; /* ALTERADO: Fundo agora é puramente branco */
 }
 
 @media (min-width: 768px) {
@@ -161,11 +161,10 @@ header p {
     z-index: 2;
 }
 
-/* SOLUÇÃO DEFINITIVA: Exibe 100% da foto na tela sem raspar nenhuma borda */
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Encaixa a foto inteira preservando as proporções originais */
+    object-fit: contain; 
     display: block;
 }
 

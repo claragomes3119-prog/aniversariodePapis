@@ -4,115 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>46 Anos do Melhor Pai!</title>
-    <!-- Vincula o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
-    
-    <!-- EMBUTIDO: Sistema Nativo de Confetes (Sem links externos e sem travar o navegador) -->
     <script>
         function dispararChuvaDeConfetes() {
-            const duration = 10 * 1000; // 10 segundos ativos
-            const animationEnd = Date.now() + duration;
-            
-            // Cria um canvas transparente na tela inteira se ele não existir
+            const duration = 10 * 1000, animationEnd = Date.now() + duration;
             let canvas = document.getElementById('canvas-confetes');
             if (!canvas) {
-                canvas = document.createElement('canvas');
-                canvas.id = 'canvas-confetes';
-                canvas.style.position = 'fixed';
-                canvas.style.top = '0';
-                canvas.style.left = '0';
-                canvas.style.width = '100vw';
-                canvas.style.height = '100vh';
-                canvas.style.pointerEvents = 'none';
-                canvas.style.zIndex = '99999';
+                canvas = document.createElement('canvas'); canvas.id = 'canvas-confetes';
+                canvas.style = 'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999';
                 document.body.appendChild(canvas);
             }
-            
             const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            
-            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500', '#dfb15b'];
-            const particles = [];
-            
-            // Redimensiona se mudar o tamanho da tela
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
-            
-            function criarParticula(lado) {
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500', '#dfb15b'], particles = [];
+            window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+            function criar(lado) {
                 return {
-                    x: lado === 'esquerda' ? 0 : canvas.width,
-                    y: canvas.height * 0.6,
+                    x: lado === 'esquerda' ? 0 : canvas.width, y: canvas.height * 0.6,
                     vx: lado === 'esquerda' ? (Math.random() * 7 + 4) : -(Math.random() * 7 + 4),
-                    vy: -(Math.random() * 12 + 8),
-                    size: Math.random() * 6 + 6,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    gravity: 0.3,
-                    rotation: Math.random() * 360,
-                    rotationSpeed: Math.random() * 4 - 2
+                    vy: -(Math.random() * 12 + 8), size: Math.random() * 6 + 6,
+                    color: colors[Math.floor(Math.random() * colors.length)], gravity: 0.3,
+                    rotation: Math.random() * 360, rSpeed: Math.random() * 4 - 2
                 };
             }
-            
             function frame() {
-                if (Date.now() > animationEnd) {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    canvas.remove();
-                    return;
-                }
-                
+                if (Date.now() > animationEnd) { ctx.clearRect(0, 0, canvas.width, canvas.height); canvas.remove(); return; }
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // Alimenta novas partículas continuamente nas laterais
-                if (particles.length < 150) {
-                    particles.push(criarParticula('esquerda'));
-                    particles.push(criarParticula('direita'));
-                }
-                
+                if (particles.length < 150) { particles.push(criar('esquerda')); particles.push(criar('direita')); }
                 for (let i = particles.length - 1; i >= 0; i--) {
-                    const p = particles[i];
-                    p.x += p.vx;
-                    p.y += p.vy;
-                    p.vy += p.gravity;
-                    p.rotation += p.rotationSpeed;
-                    
-                    ctx.save();
-                    ctx.translate(p.x, p.y);
-                    ctx.rotate(p.rotation * Math.PI / 180);
-                    ctx.fillStyle = p.color;
-                    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
-                    ctx.restore();
-                    
-                    // Remove partículas que saem da tela por baixo
-                    if (p.y > canvas.height) {
-                        particles.splice(i, 1);
-                    }
+                    const p = particles[i]; p.x += p.vx; p.y += p.vy; p.vy += p.gravity; p.rotation += p.rSpeed;
+                    ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rotation * Math.PI / 180);
+                    ctx.fillStyle = p.color; ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size); ctx.restore();
+                    if (p.y > canvas.height) particles.splice(i, 1);
                 }
-                
                 requestAnimationFrame(frame);
             }
-            
             frame();
         }
     </script>
 </head>
 <body>
 
-    <!-- Reprodutor de Áudio Oculto (Mantenha o arquivo musica.mp3 na mesma pasta) -->
     <audio id="musica-fundo" src="musica.mp3" loop></audio>
 
-    <!-- ETAPA 1: Tela de Bloqueio Inicial (Obrigatória para liberar o som) -->
     <div id="tela-bloqueio">
         <h1>Pai, preparamos algo para você...</h1>
         <p>Clique abaixo para abrir</p>
         <button class="btn-entrar" onclick="revelarSitePrincipal()">ABRIR SURPRESA 🎁</button>
     </div>
 
-    <!-- ETAPA 2: O Conteúdo Principal do Site -->
     <div id="conteudo-site" style="display: none;">
-        
-        <!-- Cabeçalho Principal (Sem Menu de Navegação) -->
         <header>
             <div class="header-conteudo">
                 <h2>46 Anos do Melhor Pai</h2>
@@ -120,44 +61,26 @@
             </div>
         </header>
 
-        <!-- Container de Seção Única -->
         <main class="container">
-            
-            <!-- CARROSSEL DE IMAGENS AUTOMÁTICO (SEM LEGENDAS) -->
             <section class="bloco-conteudo">
                 <h3>Álbum de Fotos</h3>
                 <div class="carrossel-container">
                     <div class="carrossel-slides">
-                        <div class="slide active">
-                            <img src="imagens/f1.jpg" alt="Foto 1">
-                        </div>
-                        <div class="slide">
-                            <img src="imagens/f2.jpg" alt="Foto 2">
-                        </div>
-                        <div class="slide">
-                            <img src="imagens/f3.jpg" alt="Foto 3">
-                        </div>
-                        <div class="slide">
-                            <img src="imagens/f4.jpg" alt="Foto 4">
-                        </div>
-                        <div class="slide">
-                            <img src="imagens/f5.jpg" alt="Foto 5">
-                        </div>
-                        <div class="slide">
-                            <img src="imagens/f6.jpg" alt="Foto 6">
-                        </div>
+                        <div class="slide active"><img src="imagens/f1.jpg" alt="Foto 1"></div>
+                        <div class="slide"><img src="imagens/f2.jpg" alt="Foto 2"></div>
+                        <div class="slide"><img src="imagens/f3.jpg" alt="Foto 3"></div>
+                        <div class="slide"><img src="imagens/f4.jpg" alt="Foto 4"></div>
+                        <div class="slide"><img src="imagens/f5.jpg" alt="Foto 5"></div>
+                        <div class="slide"><img src="imagens/f6.jpg" alt="Foto 6"></div>
                     </div>
-                    
                     <button class="carrossel-btn btn-prev" onclick="mudarSlide(-1)">❮</button>
                     <button class="carrossel-btn btn-next" onclick="mudarSlide(1)">❯</button>
                 </div>
             </section>
 
-            <!-- LINHA DO TEMPO VERTICAL COMPLETA (SEM AS DATAS) -->
             <section class="bloco-conteudo">
                 <h3>A Linha do Tempo da Vida Dele</h3>
                 <div class="linha-tempo-vertical">
-                    
                     <div class="marco-item">
                         <div class="marco-ano">👶</div>
                         <div class="marco-conteudo-box">
@@ -166,7 +89,6 @@
                             <p>O nascimento do garoto que cresceria para se tornar o melhor pai do mundo. Aqui começava a sua história!</p>
                         </div>
                     </div>
-
                     <div class="marco-item">
                         <div class="marco-ano">💍</div>
                         <div class="marco-conteudo-box">
@@ -175,7 +97,6 @@
                             <p>O dia do casamento e o início da construção da nossa família maravilhosa. Um passo inesquecível!</p>
                         </div>
                     </div>
-
                     <div class="marco-item">
                         <div class="marco-ano">🍼</div>
                         <div class="marco-conteudo-box">
@@ -184,52 +105,49 @@
                             <p>A chegada dos filhos e a descoberta do amor mais puro. O início da jornada como nosso grande herói.</p>
                         </div>
                     </div>
-
                     <div class="marco-item">
                         <div class="marco-ano">🎂</div>
                         <div class="marco-conteudo-box">
                             <img src="imagens/tempo4.jpg" alt="Hoje">
                             <h4>46 Anos de História</h4>
-                            <p>Hoje celebramos a sua vida, suas conquests e o privilégio que é ter você por perto todos os dias!</p>
+                            <p>Hoje celebramos a sua vida, suas conquistas e o privilégio que é ter você por perto todos os dias!</p>
                         </div>
                     </div>
-
                 </div>
             </section>
 
-            <!-- MURAL DE MENSAGENS -->
             <section class="bloco-conteudo">
                 <h3>Mensagens do Mural</h3>
                 <div class="mural">
-                    <div class="recado">
-                        <strong>Filha Carol:</strong>
-                        <p>"Papai, você é meu herói e meu maior exemplo. Obrigado por tudo, te amo!"</p>
-                    </div>
-                    <div class="recado">
-                        <strong>Filho Lucas:</strong>
-                        <p>"Feliz aniversário para o cara que me ensinou que família mora acima de tudo!"</p>
-                    </div>
-                    <div class="recado">
-                        <strong>Esposa Mariana:</strong>
-                        <p>"46 anos construindo nossa família maravilhosa. Parabéns, meu amor!"</p>
-                    </div>
+                    <div class="recado"><strong>Filha Carol:</strong><p>"Papai, você é meu herói e meu maior exemplo. Obrigado por tudo, te amo!"</p></div>
+                    <div class="recado"><strong>Filho Lucas:</strong><p>"Feliz aniversário para o cara que me ensinou que família mora acima de tudo!"</p></div>
+                    <div class="recado"><strong>Esposa Mariana:</strong><p>"46 anos construindo nossa família maravilhosa. Parabéns, meu amor!"</p></div>
                 </div>
             </section>
-
         </main>
 
-        <!-- Rodapé -->
         <footer>
             <p>Feito com amor pela sua família. ❤️</p>
         </footer>
     </div>
 
-    <!-- Script de Comando e Transições -->
     <script>
         function revelarSitePrincipal() {
             const musica = document.getElementById('musica-fundo');
-            musica.play().catch(function(error) {
-                console.log("Áudio liberado pós clique.");
-            });
-
+            musica.play().catch(function(error) { console.log("Áudio liberado pós clique."); });
+            document.getElementById('tela-bloqueio').style.display = 'none';
+            document.getElementById('conteudo-site').style.display = 'block';
+            dispararChuvaDeConfetes();
+            iniciarIntervaloCarrossel(); 
         }
+        let slideIndex = 0, carrosselTimer;
+        function mostrarSlide(index) {
+            const slides = document.querySelectorAll('.slide'); if (slides.length === 0) return;
+            if (index >= slides.length) slideIndex = 0; if (index < 0) slideIndex = slides.length - 1;
+            slides.forEach(slide => slide.classList.remove('active')); slides[slideIndex].classList.add('active');
+        }
+        function mudarSlide(n) { clearInterval(carrosselTimer); slideIndex += n; mostrarSlide(slideIndex); iniciarIntervaloCarrossel(); }
+        function iniciarIntervaloCarrossel() { carrosselTimer = setInterval(() => { slideIndex++; mostrarSlide(slideIndex); }, 4000); }
+    </script>
+</body>
+</html>

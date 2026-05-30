@@ -6,7 +6,7 @@
     <title>46 Anos do Melhor Pai!</title>
     <!-- Vincula o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
-    <!-- Biblioteca de confetes oficial carregada via CDN seguro -->
+    <!-- CORRIGIDO: Link oficial e completo da biblioteca de confetes -->
     <script src="https://jsdelivr.net"></script>
 </head>
 <body>
@@ -73,27 +73,56 @@
                     </div>
                     
                     <!-- Botões de Navegação do Carrossel -->
-                    <button class="carrossel-btn btn-prev" onclick="mudarSlide(-1)">&#10094;</button>
-                    <button class="carrossel-btn btn-next" onclick="mudarSlide(1)">&#10095;</button>
+                    <button class="carrossel-btn btn-prev" onclick="mudarSlide(-1)">❮</button>
+                    <button class="carrossel-btn btn-next" onclick="mudarSlide(1)">❯</button>
                 </div>
             </section>
 
-            <!-- LINHA DO TEMPO RETRÔ -->
+            <!-- INTEGRAÇÃO: NOVA LINHA DO TEMPO VERTICAL COMPLETA -->
             <section class="bloco-conteudo">
-                <h3>Uma Jornada de Amor e Memórias</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <img src="https://unsplash.com" alt="Anos 80">
-                        <span>Anos 80/90</span>
+                <h3>A Linha do Tempo da Vida Dele</h3>
+                <div class="linha-tempo-vertical">
+                    
+                    <!-- Marco 1 -->
+                    <div class="marco-item">
+                        <div class="marco-ano">1980</div>
+                        <div class="marco-conteudo-box">
+                            <img src="https://unsplash.com" alt="Anos 80">
+                            <h4>O Começo de Tudo 👶</h4>
+                            <p>O nascimento do garoto que cresceria para se tornar o melhor pai do mundo. Aqui começava a sua história!</p>
+                        </div>
                     </div>
-                    <div class="timeline-item">
-                        <img src="https://unsplash.com" alt="Casamento">
-                        <span>O Casamento</span>
+
+                    <!-- Marco 2 -->
+                    <div class="marco-item">
+                        <div class="marco-ano">2005</div>
+                        <div class="marco-conteudo-box">
+                            <img src="https://unsplash.com" alt="Casamento">
+                            <h4>O Grande Sim 💍</h4>
+                            <p>O dia do casamento e o início da construção da nossa família maravilhosa. Um passo inesquecível!</p>
+                        </div>
                     </div>
-                    <div class="timeline-item">
-                        <img src="https://unsplash.com" alt="Pai">
-                        <span>Modo Pai Ativado</span>
+
+                    <!-- Marco 3 -->
+                    <div class="marco-item">
+                        <div class="marco-ano">2010</div>
+                        <div class="marco-conteudo-box">
+                            <img src="https://unsplash.com" alt="Pai">
+                            <h4>Modo Pai Ativado 🍼</h4>
+                            <p>A chegada dos filhos e a descoberta do amor mais puro. O início da jornada como nosso grande herói.</p>
+                        </div>
                     </div>
+
+                    <!-- Marco 4 -->
+                    <div class="marco-item">
+                        <div class="marco-ano">2026</div>
+                        <div class="marco-conteudo-box">
+                            <img src="https://unsplash.com" alt="Hoje">
+                            <h4>46 Anos de História 🎂</h4>
+                            <p>Hoje celebramos a sua vida, suas conquistas e o privilégio que é ter você por perto todos os dias!</p>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
@@ -160,7 +189,6 @@
             }
         }
 
-        // CORRIGIDO: Nome do bloco e sintaxe da função limpos
         function chuvaDeConfetesInicial() {
             if (typeof confetti !== 'function') return;
             
@@ -202,9 +230,3 @@
         function iniciarIntervaloCarrossel() {
             carrosselTimer = setInterval(() => {
                 slideIndex++;
-                mostrarSlide(slideIndex);
-            }, 4000); 
-        }
-    </script>
-</body>
-</html>

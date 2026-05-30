@@ -6,116 +6,151 @@
     <title>46 Anos do Melhor Pai!</title>
     <!-- Vincula o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
-    <!-- Biblioteca externa para os confetes -->
-    <script src="https://jsdelivr.net"></script>
+    <!-- Biblioteca externa oficial para os confetes -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
-    <!-- Áudio Oculto (coloque o arquivo musica.mp3 na mesma pasta) -->
+    <!-- Reprodutor de Áudio Oculto (Mantenha o arquivo musica.mp3 nesta mesma pasta) -->
     <audio id="musica-fundo" src="musica.mp3" loop></audio>
 
-    <!-- Tela Inicial Interativa (Bloqueio) -->
+    <!-- Tela Inicial Interativa (Remove o bloqueio de som dos navegadores) -->
     <div id="tela-entrada">
         <h1>Pai, preparamos uma surpresa...</h1>
         <p>Clique no botão abaixo para entrar</p>
         <button class="btn-entrar" onclick="iniciarSurpresa()">ABRIR SURPRESA 🎁</button>
     </div>
 
-    <!-- Cabeçalho do Site -->
-    <header>
-        <h2>46 Anos do Melhor Pai</h2>
-        <p>Uma homenagem de toda a sua família que te ama muito!</p>
-    </header>
-
-    <!-- Menu de Navegação -->
-    <nav>
-        <a href="#">Início</a>
-        <a href="#">Nossos Momentos</a>
-        <a href="#">Mural de Mensagens</a>
-        <a href="#">Linha do Tempo</a>
-    </nav>
-
-    <!-- Conteúdo Principal -->
-    <div class="container">
+    <!-- O Conteúdo Principal do Site (Fica escondido até o clique) -->
+    <div id="conteudo-site" style="display: none;">
         
-        <!-- Seção Linha do Tempo -->
-        <section>
-            <h3>Uma Jornada de Amor e Memórias</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <img src="https://unsplash.com" alt="Anos 80">
-                    <span>Anos 80/90</span>
-                </div>
-                <div class="timeline-item">
-                    <img src="https://unsplash.com" alt="Casamento">
-                    <span>O Casamento</span>
-                </div>
-                <div class="timeline-item">
-                    <img src="https://unsplash.com" alt="Pai">
-                    <span>Modo Pai Ativado</span>
-                </div>
+        <!-- Cabeçalho Principal (Sem nenhum menu de navegação) -->
+        <header>
+            <div class="header-conteudo">
+                <h2>46 Anos do Melhor Pai</h2>
+                <p>Uma homenagem de toda a sua família que te ama muito!</p>
             </div>
-        </section>
+        </header>
 
-        <!-- Seção Mensagens do Mural -->
-        <section>
-            <h3>Mensagens do Mural</h3>
-            <div class="mural">
-                <div class="recado">
-                    <strong>Filha Carol:</strong>
-                    <p>"Papai, você é meu herói e meu maior exemplo. Obrigado por tudo, te amo!"</p>
+        <!-- Container de Seção Única -->
+        <main class="container">
+            
+            <!-- MURAL DE FOTOS INTERATIVO -->
+            <section class="bloco-conteudo">
+                <h3>Mural de Fotos</h3>
+                <div class="mural-fotos">
+                    <div class="foto-item">
+                        <img src="https://unsplash.com" alt="Foto 1">
+                        <div class="foto-legenda">Viagem Inesquecível ❤️</div>
+                    </div>
+                    <div class="foto-item">
+                        <img src="https://unsplash.com" alt="Foto 2">
+                        <div class="foto-legenda">Churrasco de Domingo 🍖</div>
+                    </div>
+                    <div class="foto-item">
+                        <img src="https://unsplash.com" alt="Foto 3">
+                        <div class="foto-legenda">O Melhor Sorriso! ✨</div>
+                    </div>
+                    <div class="foto-item">
+                        <img src="https://unsplash.com" alt="Foto 4">
+                        <div class="foto-legenda">Aniversário Passado 🎂</div>
+                    </div>
+                    <div class="foto-item">
+                        <img src="https://unsplash.com" alt="Foto 5">
+                        <div class="foto-legenda">Parceiro de Todas as Horas 🤜🤛</div>
+                    </div>
+                    <div class="foto-item">
+                        <img src="https://unsplash.com" alt="Foto 6">
+                        <div class="foto-legenda">Orgulho da Família 🌟</div>
+                    </div>
                 </div>
-                <div class="recado">
-                    <strong>Filho Lucas:</strong>
-                    <p>"Feliz aniversário para o cara que me ensinou que família mora acima de tudo!"</p>
-                </div>
-                <div class="recado">
-                    <strong>Esposa Mariana:</strong>
-                    <p>"46 anos construindo nossa família maravilhosa. Parabéns, meu amor!"</p>
-                </div>
-            </div>
-        </section>
+            </section>
 
+            <!-- LINHA DO TEMPO RETRÔ -->
+            <section class="bloco-conteudo">
+                <h3>Uma Jornada de Amor e Memórias</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <img src="https://unsplash.com" alt="Anos 80">
+                        <span>Anos 80/90</span>
+                    </div>
+                    <div class="timeline-item">
+                        <img src="https://unsplash.com" alt="Casamento">
+                        <span>O Casamento</span>
+                    </div>
+                    <div class="timeline-item">
+                        <img src="https://unsplash.com" alt="Pai">
+                        <span>Modo Pai Ativado</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MURAL DE MENSAGENS -->
+            <section class="bloco-conteudo">
+                <h3>Mensagens do Mural</h3>
+                <div class="mural">
+                    <div class="recado">
+                        <strong>Filha Carol:</strong>
+                        <p>"Papai, você é meu herói e meu maior exemplo. Obrigado por tudo, te amo!"</p>
+                    </div>
+                    <div class="recado">
+                        <strong>Filho Lucas:</strong>
+                        <p>"Feliz aniversário para o cara que me ensinou que família mora acima de tudo!"</p>
+                    </div>
+                    <div class="recado">
+                        <strong>Esposa Mariana:</strong>
+                        <p>"46 anos construindo nossa família maravilhosa. Parabéns, meu amor!"</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Rodapé do Site -->
+        <footer>
+            <p>Feito com amor pela sua família. ❤️</p>
+            <button class="btn-confete-extra" onclick="soltarConfetesManual()">Soltar Mais Confetes 🎉</button>
+        </footer>
     </div>
 
-    <!-- Rodapé -->
-    <footer>
-        <p>Feito com amor pela sua família em 2026. ❤️</p>
-        <button class="btn-confete-extra" onclick="soltarConfetes()">Soltar Mais Confetes 🎉</button>
-    </footer>
-
-    <!-- Lógica JavaScript -->
+    <!-- Script Corrigido para Execução dos Eventos -->
     <script>
         function iniciarSurpresa() {
+            // 1. Toca a música de fundo
             const musica = document.getElementById('musica-fundo');
-            musica.play().catch(error => {
-                console.log("O navegador bloqueou a reprodução automática.");
+            musica.play().catch(function(error) {
+                console.log("A reprodução automática foi gerenciada pelo navegador.");
             });
 
-            const tela = document.getElementById('tela-entrada');
-            tela.style.opacity = '0';
-            setTimeout(() => {
-                tela.style.display = 'none';
-            }, 800);
+            // 2. Remove a tela de entrada e exibe a página principal imediatamente
+            document.getElementById('tela-entrada').style.display = 'none';
+            document.getElementById('conteudo-site').style.display = 'block';
 
-            soltarConfetesEspeciais();
+            // 3. Dispara a grande animação de confetes de abertura
+            chuvaDeConfetesInicial();
         }
 
-        function soltarConfetes() {
-            confetti({
-                particleCount: 150,
-                spread: 80,
-                origin: { y: 0.6 }
-            });
+        // Função do botão manual do rodapé
+        function soltarConfetesManual() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 150,
+                    spread: 85,
+                    origin: { y: 0.6 }
+                });
+            }
         }
 
-        function soltarConfetesEspeciais() {
+        // Animação prolongada automática das laterais
+        function chuvaDeConfetesInicial() {
+            if (typeof confetti !== 'function') return;
+            
             var duration = 4 * 1000;
             var end = Date.now() + duration;
 
             (function frame() {
-                confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 } });
-                confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 } });
+                confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0, y: 0.6 } });
+                confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1, y: 0.6 } });
 
                 if (Date.now() < end) {
                     requestAnimationFrame(frame);

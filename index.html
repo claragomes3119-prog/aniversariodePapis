@@ -6,22 +6,22 @@
     <title>46 Anos do Melhor Pai!</title>
     <!-- Vincula o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
-    <!-- Biblioteca externa oficial para os confetes -->
+    <!-- Biblioteca de confetes oficial carregada via CDN seguro -->
     <script src="https://jsdelivr.net"></script>
 </head>
 <body>
 
-    <!-- Reprodutor de Áudio Oculto -->
+    <!-- Reprodutor de Áudio Oculto (coloque seu arquivo de áudio com o nome musica.mp3 na mesma pasta) -->
     <audio id="musica-fundo" src="musica.mp3" loop></audio>
 
-    <!-- ETAPA 1: Tela de Bloqueio Inicial (Liberação do Áudio) -->
+    <!-- ETAPA 1: Tela de Bloqueio Inicial -->
     <div id="tela-bloqueio">
         <h1>Pai, preparamos algo para você...</h1>
         <p>Clique abaixo para abrir</p>
         <button class="btn-entrar" onclick="avancarParaOBolo()">ABRIR SURPRESA 🎁</button>
     </div>
 
-    <!-- ETAPA 2: Tela do Bolo Animado (Aparece após o primeiro clique) -->
+    <!-- ETAPA 2: Tela do Bolo Animado -->
     <div id="tela-bolo" style="display: none;">
         <div class="bolo-container">
             <div class="vela">
@@ -35,10 +35,10 @@
         <button class="btn-entrar" onclick="revelarSitePrincipal()">APAGAR A VELA 🎂</button>
     </div>
 
-    <!-- ETAPA 3: O Conteúdo Principal do Site (Revelado por último) -->
+    <!-- ETAPA 3: O Conteúdo Principal do Site -->
     <div id="conteudo-site" style="display: none;">
         
-        <!-- Cabeçalho Principal -->
+        <!-- Cabeçalho Principal (Sem Menu de Navegação) -->
         <header>
             <div class="header-conteudo">
                 <h2>46 Anos do Melhor Pai</h2>
@@ -49,34 +49,32 @@
         <!-- Container de Seção Única -->
         <main class="container">
             
-            <!-- MURAL DE FOTOS INTERATIVO -->
+            <!-- CARROSSEL DE IMAGENS AUTOMÁTICO (SEM LEGENDAS) -->
             <section class="bloco-conteudo">
-                <h3>Mural de Fotos</h3>
-                <div class="mural-fotos">
-                    <div class="foto-item">
-                        <img src="https://unsplash.com" alt="Foto 1">
-                        <div class="foto-legenda">Viagem Inesquecível ❤️</div>
+                <h3>Álbum de Fotos</h3>
+                <div class="carrossel-container">
+                    <div class="carrossel-slides">
+                        <!-- Foto 1 -->
+                        <div class="slide active">
+                            <img src="https://unsplash.com" alt="Foto 1">
+                        </div>
+                        <!-- Foto 2 -->
+                        <div class="slide">
+                            <img src="https://unsplash.com" alt="Foto 2">
+                        </div>
+                        <!-- Foto 3 -->
+                        <div class="slide">
+                            <img src="https://unsplash.com" alt="Foto 3">
+                        </div>
+                        <!-- Foto 4 -->
+                        <div class="slide">
+                            <img src="https://unsplash.com" alt="Foto 4">
+                        </div>
                     </div>
-                    <div class="foto-item">
-                        <img src="https://unsplash.com" alt="Foto 2">
-                        <div class="foto-legenda">Churrasco de Domingo 🍖</div>
-                    </div>
-                    <div class="foto-item">
-                        <img src="https://unsplash.com" alt="Foto 3">
-                        <div class="foto-legenda">O Melhor Sorriso! ✨</div>
-                    </div>
-                    <div class="foto-item">
-                        <img src="https://unsplash.com" alt="Foto 4">
-                        <div class="foto-legenda">Aniversário Passado 🎂</div>
-                    </div>
-                    <div class="foto-item">
-                        <img src="https://unsplash.com" alt="Foto 5">
-                        <div class="foto-legenda">Parceiro de Todas as Horas 🤜🤛</div>
-                    </div>
-                    <div class="foto-item">
-                        <img src="https://unsplash.com" alt="Foto 6">
-                        <div class="foto-legenda">Orgulho da Família 🌟</div>
-                    </div>
+                    
+                    <!-- Botões de Navegação do Carrossel -->
+                    <button class="carrossel-btn btn-prev" onclick="mudarSlide(-1)">&#10094;</button>
+                    <button class="carrossel-btn btn-next" onclick="mudarSlide(1)">&#10095;</button>
                 </div>
             </section>
 
@@ -127,34 +125,29 @@
         </footer>
     </div>
 
-    <!-- Script da Surpresa em Etapas -->
+    <!-- Script de Execução Corrigido -->
     <script>
-        // Etapa 1 -> Etapa 2
+        // Transição Etapa 1 para Etapa 2
         function avancarParaOBolo() {
             document.getElementById('tela-bloqueio').style.display = 'none';
             document.getElementById('tela-bolo').style.display = 'flex';
         }
 
-        // Etapa 2 -> Etapa 3 (Revelação Final)
+        // Transição Etapa 2 para Etapa 3 (Revelação)
         function revelarSitePrincipal() {
-            // 1. Apaga visualmente o fogo da vela
             const chama = document.getElementById('fogo-vela');
             if(chama) chama.style.display = 'none';
 
-            // 2. Dá início à trilha sonora de fundo
             const musica = document.getElementById('musica-fundo');
             musica.play().catch(function(error) {
-                console.log("Áudio iniciado.");
+                console.log("Áudio iniciado com sucesso.");
             });
 
-            // 3. Pequeno atraso de 400ms para simular o "assopro" e abrir o site
-            setTimeout(function() {
-                document.getElementById('tela-bolo').style.display = 'none';
-                document.getElementById('conteudo-site').style.display = 'block';
-                
-                // 4. Inicia a grande chuva de confetes duradoura por 10 segundos
-                chuvaDeConfetesInicial();
-            }, 400);
+            document.getElementById('tela-bolo').style.display = 'none';
+            document.getElementById('conteudo-site').style.display = 'block';
+            
+            chuvaDeConfetesInicial();
+            iniciarIntervaloCarrossel(); 
         }
 
         function soltarConfetesManual() {
@@ -167,10 +160,11 @@
             }
         }
 
+        // CORRIGIDO: Nome do bloco e sintaxe da função limpos
         function chuvaDeConfetesInicial() {
             if (typeof confetti !== 'function') return;
             
-            var duration = 10 * 1000; 
+            var duration = 10 * 1000; // 10 segundos ativos
             var end = Date.now() + duration;
 
             (function frame() {
@@ -181,6 +175,35 @@
                     requestAnimationFrame(frame);
                 }
             }());
+        }
+
+        // Mecanismo de Funcionamento do Carrossel
+        let slideIndex = 0;
+        let carrosselTimer;
+
+        function mostrarSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            if (slides.length === 0) return;
+            
+            if (index >= slides.length) slideIndex = 0;
+            if (index < 0) slideIndex = slides.length - 1;
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[slideIndex].classList.add('active');
+        }
+
+        function mudarSlide(n) {
+            clearInterval(carrosselTimer); 
+            slideIndex += n;
+            mostrarSlide(slideIndex);
+            iniciarIntervaloCarrossel(); 
+        }
+
+        function iniciarIntervaloCarrossel() {
+            carrosselTimer = setInterval(() => {
+                slideIndex++;
+                mostrarSlide(slideIndex);
+            }, 4000); 
         }
     </script>
 </body>
